@@ -11,12 +11,14 @@ const changeBodyColor = function () {
     const color = getRandomHexColor();
     refs.bodyColor.style.backgroundColor = color;
   }, 1000);
+  refs.startBtn.setAttribute('disabled', 'disabled');
 };
 
 refs.startBtn.addEventListener('click', changeBodyColor);
 
 refs.stopBtn.addEventListener('click', () => {
   clearInterval(timerId);
+  refs.startBtn.removeAttribute('disabled');
 });
 
 function getRandomHexColor() {
