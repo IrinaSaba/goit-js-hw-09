@@ -18,14 +18,14 @@ const options = {
   minuteIncrement: 1,
   onClose(selectedDates) {
     // console.log(this.selectedDates[0] - new Date());
-    if (this.selectedDates[0].getTime() <= new Date().getTime()) {
+    if (selectedDates[0].getTime() <= new Date().getTime()) {
       return Notiflix.Notify.failure('Please choose a date in the future');
     }
     refs.startBtn.removeAttribute('disabled');
     refs.startBtn.style.backgroundColor = 'skyblue';
     refs.startBtn.addEventListener('click', event => {
       const timerId = setInterval(() => {
-        if (this.selectedDates[0] - new Date() >= 0) {
+        if (selectedDates[0] - new Date() >= 0) {
           updateTimer(convertMs(this.selectedDates[0] - new Date()));
         }
       }, 1000);
