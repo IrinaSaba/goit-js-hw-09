@@ -24,9 +24,11 @@ const options = {
     refs.startBtn.removeAttribute('disabled');
     refs.startBtn.style.backgroundColor = 'skyblue';
     refs.startBtn.addEventListener('click', event => {
+      let delta = selectedDates[0] - new Date();
       const timerId = setInterval(() => {
-        if (selectedDates[0] - new Date() >= 0) {
-          updateTimer(convertMs(this.selectedDates[0] - new Date()));
+        delta -= 1000;
+        if (delta >= 0) {
+          updateTimer(convertMs(delta));
         }
       }, 1000);
     });

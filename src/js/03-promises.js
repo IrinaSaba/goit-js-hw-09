@@ -13,9 +13,10 @@ refs.form.addEventListener('submit', event => {
   let delay = +delays.value;
   // console.log(delay);
   for (let position = 1; amount.value >= position; position += 1) {
-    // console.log(+delays.value);
-    delay += +step.value;
     // console.log(delay);
+    if (position != 1) {
+      delay += +step.value;
+    }
     function createPromise(position, delay) {
       return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -38,4 +39,5 @@ refs.form.addEventListener('submit', event => {
         Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
+  event.currentTarget.reset();
 });
